@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "main_process",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": [
+    "src/main/**/*"
+  ],
+  "exclude": [  // 不包括react项目
+    "src/render/**/*"
+  ]
+}

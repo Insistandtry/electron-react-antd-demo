@@ -1,19 +1,11 @@
+# dependencies
 **/node_modules
-node_modules
-src/render/node_modules
-
-/main_process
-main_process
-
-/render_process
-render_process
-
-/release
-release
 
 **/dist
+**/main_process
+**/render_process
 
-build
+release
 
 .history
 *.log

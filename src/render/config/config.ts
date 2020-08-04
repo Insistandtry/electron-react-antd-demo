@@ -106,11 +106,11 @@ export default defineConfig({
   },
   publicPath: './',
   history: {
-    type: 'hash'
+    type: 'hash',
   },
   chainWebpack: (config) => {
-    config.target('electron-renderer')
+    config.target('electron-renderer');
   },
-  // 重新定义打包后输出的路径，与app同级
-  outputPath: '../../render_process'
+  // 重新定义打包后输出的路径
+  outputPath: '../../dist/render_process',
 });

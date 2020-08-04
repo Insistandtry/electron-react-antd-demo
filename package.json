@@ -3,20 +3,22 @@
   "version": "1.0.0",
   "author": "juno",
   "description": "A minimal Electron application written with Typescript",
-  "main": "./main_process/main.js",
+  "main": "./dist/main_process/main.js",
   "scripts": {
     "start:dev": "concurrently \"npm run start:render\"  \" wait-on http://localhost:8000 && npm run start:main\" ",
+    "start": "electron ./dist/main_process/main.js",
     "start:main": "npm run build:main && npm run start",
     "start:render": "cd ./src/render && yarn start",
-    "start": "electron ./main_process/main.js",
 
-    "clean": "npm run clean:release && npm run clean:process",
+    "clean": "npm run clean:release && npm run clean:dist",
     "clean:release": "rm -rf release",
-    "clean:process": "rm -rf main_process && rm -rf render_process ",
+    "clean:dist": "rm -rf dist ",
+    "clean:main": "rm -rf ./dist/main_process",
+    "clean:render": "rm -rf ./dist/render_process",
 
     "build": "npm run build:main && npm run build:render ",
-    "build:main": "rm -rf main_process && tsc",
-    "build:render": "cd ./src/render && yarn build ",
+    "build:main": "npm run clean:main && tsc",
+    "build:render": "npm run clean:render && cd ./src/render && yarn build ",
 
     "pack:mac": "electron-builder -m ",
     "pack": "npm run clean:release && npm run pack:mac ",
@@ -45,24 +47,20 @@
     "asar": false,
     "npmRebuild": false,
     "directories": {
-      "buildResources": "resources",
       "output": "release/"
     },
     "files": [
       "package.json",
-      "main.js",
-      "main_process/",
-      "render_process/",
-      "node_modules/",
-      "resource/icon.png"
+      "dist/",
+      "resources"
     ],
     "mac": {
       "target": "dmg",
-      "icon": "resource/icon.png"
+      "icon": "resources/icon.png"
     },
     "win": {
       "target": "nsis",
-      "icon": "resource/icon.png"
+      "icon": "resources/icon.png"
     }
   }
 }

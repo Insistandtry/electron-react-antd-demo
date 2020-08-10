@@ -3,29 +3,27 @@
   "version": "1.0.0",
   "author": "juno",
   "description": "A minimal Electron application written with Typescript",
-  "main": "./dist/main_process/main.js",
+  "license": "ISC",
+  "main": "./dist/main_process/index.js",
   "scripts": {
-    "start:dev": "concurrently \"npm run start:render\"  \" wait-on http://localhost:8000 && npm run start:main\" ",
-    "start": "electron ./dist/main_process/main.js",
-    "start:main": "npm run build:main && npm run start",
+    "start:dev": "concurrently \"npm run start:render\"  \" wait-on http://localhost:8000 && npm run start:main \" ",
+    "start:nodemon": " wait-on ./dist/main_process/index.js && nodemon --watch ./dist/main_process/index.js --exec electron .",
+    "start:electronmon": " wait-on ./dist/main_process/index.js && electronmon ./dist/main_process/index.js",
+    "start:main": "concurrently \" npm run build:main \"  \" npm run start:electronmon \" ",
     "start:render": "cd ./src/render && yarn start",
-
+    "start": "electron ./dist/main_process/index.js",
     "clean": "npm run clean:release && npm run clean:dist",
     "clean:release": "rm -rf release",
     "clean:dist": "rm -rf dist ",
     "clean:main": "rm -rf ./dist/main_process",
     "clean:render": "rm -rf ./dist/render_process",
-
     "build": "npm run build:main && npm run build:render ",
-    "build:main": "npm run clean:main && tsc",
+    "build:main": "npm run clean:main && npm run watch ",
     "build:render": "npm run clean:render && cd ./src/render && yarn build ",
-
     "pack:mac": "electron-builder -m ",
     "pack": "npm run clean:release && npm run pack:mac ",
-
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json"
-
   },
   "keywords": [
     "Electron",
@@ -35,16 +33,22 @@
   ],
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "electron": "^9.1.1",
+    "electron": "^9.1.2",
     "electron-builder": "^22.7.0",
+    "electronmon": "^1.1.2",
+    "nodemon": "^2.0.4",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.5",
-    "wait-on": "^5.1.0"
+    "typescript": "^3.9.7",
+    "wait-on": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0"
   },
   "build": {
     "productName": "electron-react-antd",
     "appId": "electron-react-antd",
     "asar": false,
+    
     "npmRebuild": false,
     "directories": {
       "output": "release/"
@@ -62,5 +66,15 @@
       "target": "nsis",
       "icon": "resources/icon.png"
     }
+  },
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "electronmon": {
+    "patterns": [
+      "dist/main_process/**"
+    ]
   }
 }

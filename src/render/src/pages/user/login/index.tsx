@@ -1,17 +1,16 @@
 import { AlipayCircleOutlined, TaobaoCircleOutlined, WeiboCircleOutlined } from '@ant-design/icons';
-import { Alert, Checkbox, Button } from 'antd';
+import { Alert, Checkbox } from 'antd';
 import React, { useState } from 'react';
 import { Link, connect, Dispatch } from 'umi';
 import { StateType } from '@/models/login';
 import { LoginParamsType } from '@/services/login';
 import { ConnectState } from '@/models/connect';
-import { ipcRenderer } from 'electron'
 import LoginForm from './components/Login';
 
 import styles from './style.less';
 
-
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginForm;
+
 interface LoginProps {
   dispatch: Dispatch;
   userLogin: StateType;
@@ -39,11 +38,13 @@ const Login: React.FC<LoginProps> = (props) => {
 
   const handleSubmit = (values: LoginParamsType) => {
     const { dispatch } = props;
+
     dispatch({
       type: 'login/login',
       payload: { ...values, type },
     });
   };
+
   return (
     <div className={styles.main}>
       <LoginForm activeKey={type} onTabChange={setType} onSubmit={handleSubmit}>
@@ -51,11 +52,6 @@ const Login: React.FC<LoginProps> = (props) => {
           {status === 'error' && loginType === 'account' && !submitting && (
             <LoginMessage content="账户或密码错误（admin/ant.design）" />
           )}
-          <Button onClick={()=>{
-            ipcRenderer.sendSync('async-render', '我是来自渲染进程的同步消息');
-          }}>
-             test
-          </Button>
           <UserName
             name="userName"
             placeholder="用户名: admin or user"

@@ -32,11 +32,7 @@
     "test:component": "umi test ./src/components",
     "tsc": "tsc"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint-staged"
-    }
-  },
+  
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
     "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
@@ -55,7 +51,7 @@
     "@ant-design/pro-table": "^2.4.0",
     "antd": "^4.4.0",
     "classnames": "^2.2.6",
-    "electron": "^9.1.1",
+    "electron": "^9.2.0",
     "lodash": "^4.17.11",
     "moment": "^2.25.3",
     "omit.js": "^2.0.2",

@@ -10,7 +10,11 @@
     "no-arg": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": false
+    "no-consecutive-blank-lines": false,
+    "no-var-requires": false,
+    "@typescript-eslint/no-var-requires": false,
+    "no-underscore-dangle": ["off", "always"],
+    "one-variable-per-declaration": false
   },
   "jsRules": {
     "max-line-length": {

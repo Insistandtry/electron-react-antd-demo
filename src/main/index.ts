@@ -3,12 +3,21 @@ import handleEvents from './event';
 import createDock from './windows/dock';
 const {createWindow, showMainWindow, closeMainWindow} = require('./windows/main');
 
+declare global {
+    namespace NodeJS {
+      interface Global {
+        __maindirname: string;
+        mainId: number
+      }
+    }
+}
+
 // 安装过程中不会自动运行，安装完成后才会自动运行
 if(require('electron-squirrel-startup')) {
     app.quit();
 }
 
-(global as any).__maindirname = __dirname;
+global.__maindirname = __dirname;
 
 const gotTheLock = app.requestSingleInstanceLock();
 // 如果没有成功取了锁，则立即退出

@@ -1,7 +1,7 @@
 import { app, Menu, BrowserWindow } from 'electron';
 
 export default function createDock () {
-    const mainWindow = BrowserWindow.fromId((global as any).mainId),
+    const mainWindow = BrowserWindow.fromId((global).mainId),
         dockMenu = Menu.buildFromTemplate([
             {
                 label: '打开窗口',

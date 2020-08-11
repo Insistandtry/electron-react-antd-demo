@@ -1,14 +1,13 @@
 import { ipcMain, Menu } from 'electron';
 
 function getAsyncMsg() {
-    ipcMain.on('async-render', (event, data)=>{
+    ipcMain.on('async-render', (event)=>{
         console.log('this is ipcMain async-render ', Menu.getApplicationMenu());
-        event.sender.send('async-reply','haha');
+        event.sender.send('async-reply', 'haha');
     });
 
 }
 
 export default function handleIPC(){
     getAsyncMsg();
-
 }

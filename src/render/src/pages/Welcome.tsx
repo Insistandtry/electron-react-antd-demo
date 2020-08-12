@@ -66,7 +66,11 @@ export default (): React.ReactNode => {
 
                 <Button
                     onClick={() => {
-                        ipcRenderer.send('async-render', '我是来自渲染进程的同步消息');
+                        // ipcRenderer.send('async-render', '我是来自渲染进程的同步消息');
+                        ipcRenderer.send('notification', {
+                            title: 'hahahaha',
+                            body: 'sss'
+                        });
                     }}
                 >
           测试主进程和渲染进程通信

@@ -141,7 +141,7 @@ module.exports = {
         'no-obj-calls': 2, //不能调用内置的全局对象，比如Math() JSON()
         'no-octal': 2, //禁止使用八进制数字
         'no-octal-escape': 2, //禁止使用八进制转义序列
-        'no-param-reassign': 2, //禁止给参数重新赋值
+        'no-param-reassign': 0, //禁止给参数重新赋值
         'no-path-concat': 0, //node中不能使用__dirname或__filename做路径拼接
         'no-plusplus': 0, //禁止使用++，--
         'no-process-env': 0, //禁止使用process.env
@@ -236,7 +236,9 @@ module.exports = {
         'no-unused-vars': 1,
         '@typescript-eslint/no-namespace': 0,
         '@typescript-eslint/no-var-requires': 0,
-        '@typescript-eslint/explicit-module-boundary-types': 0
+        '@typescript-eslint/explicit-module-boundary-types': 0,
+        '@typescript-eslint/no-explicit-any': 0,
+        '@typescript-eslint/no-empty-function': 0
     }
 };
 

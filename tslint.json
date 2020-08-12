@@ -14,7 +14,8 @@
     "no-var-requires": false,
     "@typescript-eslint/no-var-requires": false,
     "no-underscore-dangle": ["off", "always"],
-    "one-variable-per-declaration": false
+    "one-variable-per-declaration": false,
+    "no-empty": false
   },
   "jsRules": {
     "max-line-length": {

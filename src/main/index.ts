@@ -1,7 +1,7 @@
-import { app, BrowserWindow, ipcMain, Tray, Menu, clipboard } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import handleEvents from './event';
 import createDock from './windows/dock';
-const {createWindow, showMainWindow, closeMainWindow} = require('./windows/main');
+import {createWindow, showMainWindow} from './windows/main';
 
 declare global {
     namespace NodeJS {

@@ -18,6 +18,14 @@ module.exports = {
             'jsx': true
         }
     },
+    globals: {
+        ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION: true,
+        page: true,
+        REACT_APP_ENV: true,
+        sessionStorage: true,
+        localStorage: true,
+        window: true
+    },
     'rules': {
         // 定义对象的set存取器属性时，强制定义get
         'accessor-pairs': 2,
@@ -154,8 +162,8 @@ module.exports = {
         'no-script-url': 0, //禁止使用javascript:void(0)
         'no-self-compare': 2, //不能比较自身
         'no-sequences': 0, //禁止使用逗号运算符
-        'no-shadow': 2, //外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
-        'no-shadow-restricted-names': 2, //严格模式中规定的限制标识符不能作为声明时的变量名使用
+        'no-shadow': 1, //外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
+        'no-shadow-restricted-names': 1, //严格模式中规定的限制标识符不能作为声明时的变量名使用
         'no-spaced-func': 2, //函数调用时 函数名与()之间不能有空格
         'no-sparse-arrays': 2, //禁止稀疏数组， [1,,2]
         'no-sync': 0, //nodejs 禁止同步方法
@@ -173,7 +181,7 @@ module.exports = {
         'no-use-before-define': 2, //未定义前不能使用
         'no-useless-call': 2, //禁止不必要的call和apply
         'no-void': 2, //禁用void操作符
-        'no-var': 0, //禁用var，用let和const代替
+        'no-var': 2, //禁用var，用let和const代替
         'no-warning-comments': [1, { 'terms': ['todo', 'fixme', 'xxx'], 'location': 'start' }], //不能有警告备注
         'no-with': 2, //禁用with
         'arrow-parens': 0, //箭头函数用小括号括起来
@@ -233,12 +241,13 @@ module.exports = {
         'array-callback-return': 0,
         '@typescript-eslint/explicit-function-return-type': 0,
         '@typescript-eslint/no-unused-vars': 0,
-        'no-unused-vars': 1,
+        'no-unused-vars': 0,
         '@typescript-eslint/no-namespace': 0,
         '@typescript-eslint/no-var-requires': 0,
         '@typescript-eslint/explicit-module-boundary-types': 0,
         '@typescript-eslint/no-explicit-any': 0,
-        '@typescript-eslint/no-empty-function': 0
+        '@typescript-eslint/no-empty-function': 0,
+        '@typescript-eslint/ban-types': 0
     }
 };
 

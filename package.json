@@ -33,7 +33,13 @@
   },
   "electronmon": {
     "patterns": [
-      "dist/main_process/**"
+      "!dist",
+      "!dist/**/*",
+      "!node_modules",
+      "!node_modules/**/*",
+      "!src/render/**/*",
+      "!release",
+      "!release/**/*"
     ]
   },
   "dependencies": {

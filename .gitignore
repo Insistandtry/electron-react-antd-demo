@@ -22,3 +22,6 @@ functions/*
 *.diff
 *.patch
 *.tmp
+*.lock
+
+/.vscode
